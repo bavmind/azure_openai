@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Devran Cosmo Uenal"]
   spec.email = ["maccosmo@gmail.com"]
 
-  spec.summary = "Azure OpenAI API Wrapper"
-  spec.description = "An unofficial wrapper for the Azure OpenAI API."
+  spec.summary = "Unofficial Azure OpenAI API Client"
+  spec.description = "An unofficial client for the Azure OpenAI API."
   spec.homepage = "https://bavmind.com"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.3.0"
