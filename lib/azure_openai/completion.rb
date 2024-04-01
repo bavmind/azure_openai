@@ -93,34 +93,39 @@ module AzureOpenAI
       end
     end
 
-    def handle_error(status, response_body = nil) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
-      error_details = parse_error_response(response_body)
-      pretty_details = JSON.pretty_generate(error_details)
-
+    def handle_error(status, response_body = nil)
+      error_response = parse_error_response(response_body)
       case status
-      when 400
-        case error_details["code"]
-        when "content_filter"
-          raise AzureOpenAI::ContentFilterError, "Content filter triggered: \n#{pretty_details}"
-        else
-          raise AzureOpenAI::InvalidRequestError, "Invalid request: \n#{pretty_details}"
-        end
-      when 401
-        raise AzureOpenAI::AuthenticationError, "Invalid API key: \n#{pretty_details}"
-      when 404
-        case error_details["code"]
-        when "DeploymentNotFound"
-          raise AzureOpenAI::DeploymentNotFoundError, "Deployment not found: \n#{pretty_details}"
-        else
-          raise AzureOpenAI::NotFoundError, "Resource not found: \n#{pretty_details}"
-        end
-      when 429
-        raise AzureOpenAI::RateLimitError, "Rate limit exceeded: \n#{pretty_details}"
-      else
-        error_message = "Unexpected response from API: \n#{status}"
-        error_message += " - #{pretty_details}" unless error_details.empty?
-        raise AzureOpenAI::UnexpectedResponseError, error_message
+      when 400 then handle_error400(error_response)
+      when 401 then raise AzureOpenAI::AuthenticationError, "Invalid API key: \n#{error_response}"
+      when 404 then handle_error404(error_response)
+      when 429 then raise AzureOpenAI::RateLimitError, "Rate limit exceeded: \n#{error_response}"
+      else handle_unknown_error(status, error_response)
       end
+    end
+
+    def handle_error404(error_response)
+      case error_response["code"]
+      when "DeploymentNotFound"
+        raise AzureOpenAI::DeploymentNotFoundError, "Deployment not found: \n#{error_response}"
+      else
+        raise AzureOpenAI::NotFoundError, "Resource not found: \n#{error_response}"
+      end
+    end
+
+    def handle_error400(error_response)
+      case error_response["code"]
+      when "content_filter"
+        raise AzureOpenAI::ContentFilterError, "Content filter triggered: \n#{error_response}"
+      else
+        raise AzureOpenAI::InvalidRequestError, "Invalid request: \n#{error_response}"
+      end
+    end
+
+    def handle_unknown_error(status, error_response)
+      error_message = "Unexpected response from API: \n#{status}"
+      error_message += " - #{error_response}" unless error_response.empty?
+      raise AzureOpenAI::UnexpectedResponseError, error_message
     end
 
     def parse_error_response(body)
