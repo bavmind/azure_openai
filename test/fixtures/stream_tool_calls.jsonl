@@ -1,0 +1,19 @@
+{"choices":[],"model":""}
+{"choices":[{"delta":{"role":"assistant","tool_calls":[{"function":{"arguments":"","name":"knowledge_base_retrieval"},"index":0,"type":"function"}, {"function":{"arguments":"","name":"search"},"index":1,"type":"function"}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"role":"assistant","tool_calls":[{"function":{"arguments":"","name":"create_ticket"},"index":0,"type":"function"}]},"finish_reason":null,"index":1}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"{\""},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"query"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"_string"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"\":\""},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"found"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"ers"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":" of"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":" Bav"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"{\""},"index":0}]},"finish_reason":null,"index":1}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"\"}"},"index":0}]},"finish_reason":null,"index":1}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{},"finish_reason":"tool_calls","index":1}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"Mind"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"\"}"},"index":0}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"{\""},"index":1}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{"tool_calls":[{"function":{"arguments":"\"}"},"index":1}]},"finish_reason":null,"index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}
+{"choices":[{"delta":{},"finish_reason":"tool_calls","index":0}],"model":"gpt-4","system_fingerprint":"fp_2f57f81c11"}

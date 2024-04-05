@@ -1,0 +1,19 @@
+{"model":"","choices":[]}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"role":"assistant"}},{"finish_reason":null,"index":1,"delta":{"role":"assistant"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":"Why"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" don"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":"'t"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" scientists"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" trust"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" atoms"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":"?\n\n"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":"Because"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" they"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" make"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":1,"delta":{"content":"Hello"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" up"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":" everything"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":1,"delta":{"content":" world!"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":"stop","index":1,"delta":{}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":null,"index":0,"delta":{"content":"!"}}],"system_fingerprint":"fp_68a7d165bf"}
+{"model":"gpt-35-turbo","choices":[{"finish_reason":"stop","index":0,"delta":{}}],"system_fingerprint":"fp_68a7d165bf"}

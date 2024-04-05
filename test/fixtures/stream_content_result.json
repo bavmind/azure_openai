@@ -1,0 +1,22 @@
+{
+  "model": "gpt-35-turbo",
+  "choices": [
+    {
+      "index": 0,
+      "delta": {
+        "content": "Why don't scientists trust atoms?\n\nBecause they make up everything!",
+        "role": "assistant"
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "index": 1,
+      "delta": {
+        "content": "Hello world!",
+        "role": "assistant"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "system_fingerprint": "fp_68a7d165bf"
+}
