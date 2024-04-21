@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    azure_openai (0.1.0)
+    azure_openai (0.3.0)
       event_stream_parser (~> 1.0)
       faraday (~> 2.9)
       json (~> 2.7.1)

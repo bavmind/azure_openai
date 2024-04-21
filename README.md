@@ -39,12 +39,47 @@ class LanguageModel
         "api_version" => "2023-12-01-preview"
       }
     )
+
+    ada2 = LanguageModel.new(
+      name: "Ada2",
+      kind: "embedding",
+      provider: "azure",
+      configuration: {
+        "host" => "your_instance.openai.azure.com",
+        "api_key" => "your_key",
+        "deployment" => "ada2",
+        "api_version" => "2023-12-01-preview"
+      }
+    )
+
+    [gpt_4_turbo, ada2]
   end
 end
 
+first_completion_model = LanguageModel.all.find { |model| model.kind == "completion" }
+
+parameters = {
+  "messages" => [
+    {
+      "role" => "system",
+      "content" => "Tell me a joke"
+    }
+  ]
+}
 response = AzureOpenAI::Completion
-  .new(models.first)
+  .new(first_completion_model)
   .chat(parameters)
+puts response
+
+
+first_embedding_model = LanguageModel.all.find { |model| model.kind == "embedding" }
+
+parameters = {
+  "input" => "Once upon a time"
+}
+response = AzureOpenAI::Embedding
+  .new(first_embedding_model)
+  .embed(parameters)
 puts response
 ```
 

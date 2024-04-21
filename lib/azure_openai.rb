@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require "faraday"
+
 require_relative "azure_openai/version"
 require_relative "azure_openai/completion"
 require_relative "azure_openai/completion_multi_model"
+require_relative "azure_openai/embedding"
 require_relative "azure_openai/helper"
 require_relative "azure_openai/stream_merger"
 
