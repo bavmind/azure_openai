@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "json"
+require "dotenv/load"
 
 class TestAzureOpenAI < Minitest::Test
   def test_that_it_has_a_version_number

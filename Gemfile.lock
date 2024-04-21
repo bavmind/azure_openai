@@ -10,6 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    dotenv (3.1.0)
     event_stream_parser (1.0.0)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
@@ -57,6 +58,7 @@ PLATFORMS
 
 DEPENDENCIES
   azure_openai!
+  dotenv
   minitest (~> 5.16)
   rake (~> 13.0)
   rubocop (~> 1.21)
