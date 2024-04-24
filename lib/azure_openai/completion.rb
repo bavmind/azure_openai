@@ -37,8 +37,8 @@ module AzureOpenAI
 
     def connection
       @connection ||= Faraday.new(url: @api_url, headers: request_headers) do |faraday|
-        faraday.options.open_timeout = 20    # set connection timeout
-        faraday.options.timeout = 90         # set read timeout
+        faraday.options.open_timeout = 60    # set connection timeout
+        faraday.options.timeout = 300        # set read timeout
       end
     end
 
