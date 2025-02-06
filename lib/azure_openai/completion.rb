@@ -27,13 +27,13 @@ module AzureOpenAI
     rescue Faraday::ConnectionFailed => e
       {
         error: true,
-        error_type: "Connection Failed",
+        error_type: "ConnectionFailed",
         message: "Connection to API failed: #{e.message}"
       }
     rescue Faraday::TimeoutError => e
       {
         error: true,
-        error_type: "Timeout Error",
+        error_type: "TimeoutError",
         message: "API request timed out: #{e.message}"
       }
     rescue AzureOpenAI::Error => e
