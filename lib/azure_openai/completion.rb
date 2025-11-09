@@ -18,19 +18,41 @@ module AzureOpenAI
       @stream = stream
     end
 
-    def chat(parameters)
-      # Rails.logger.info("Chatting with \"#{@name}\" model with URL: #{@api_url}.")
+    def chat(parameters) # rubocop:disable Metrics/MethodLength
       if @stream.nil?
         single_request_chat(parameters)
       else
         stream_chat(parameters)
       end
     rescue Faraday::ConnectionFailed => e
-      # Rails.logger.error("API connection failed: #{e.message}")
-      raise AzureOpenAI::ConnectionError, "Connection to API failed: #{e}"
+      {
+        error: true,
+        error_type: "ConnectionFailed",
+        message: "Connection to API failed: #{e.message}"
+      }
     rescue Faraday::TimeoutError => e
-      # Rails.logger.error("API request timed out: #{e.message}")
-      raise AzureOpenAI::TimeoutError, "API request timed out: #{e}"
+      {
+        error: true,
+        error_type: "TimeoutError",
+        message: "API request timed out: #{e.message}"
+      }
+    rescue AzureOpenAI::Error => e
+      error_type = case e
+                   when AzureOpenAI::InvalidRequestError then "InvalidRequestError"
+                   when AzureOpenAI::AuthenticationError then "AuthenticationError"
+                   when AzureOpenAI::DeploymentNotFoundError then "DeploymentNotFoundError"
+                   when AzureOpenAI::NotFoundError then "NotFoundError"
+                   when AzureOpenAI::RateLimitError then "RateLimitError"
+                   when AzureOpenAI::ContentFilterError then "ContentFilterError"
+                   when AzureOpenAI::UnexpectedResponseError then "UnexpectedResponseError"
+                   else "Unknown Error"
+                   end
+
+      {
+        error: true,
+        error_type:,
+        message: e.message
+      }
     end
 
     private
@@ -93,14 +115,23 @@ module AzureOpenAI
       end
     end
 
-    def handle_error(status, response_body = nil)
+    def handle_error(status, response_body = nil) # rubocop:disable Metrics/MethodLength
       error_response = parse_error_response(response_body)
       case status
       when 400 then handle_error400(error_response)
       when 401 then raise AzureOpenAI::AuthenticationError, "Invalid API key: \n#{error_response}"
-      when 404 then handle_error404(error_response)
+      when 404
+        case error_response["code"]
+        when "DeploymentNotFound"
+          raise AzureOpenAI::DeploymentNotFoundError, "Deployment not found: \n#{error_response}"
+        else
+          raise AzureOpenAI::NotFoundError, "Resource not found: \n#{error_response}"
+        end
       when 429 then raise AzureOpenAI::RateLimitError, "Rate limit exceeded: \n#{error_response}"
-      else handle_unknown_error(status, error_response)
+      else
+        error_message = "Unexpected response from API: \n#{status}"
+        error_message += " - #{error_response}" unless error_response.empty?
+        raise AzureOpenAI::UnexpectedResponseError, error_message
       end
     end
 
@@ -131,11 +162,9 @@ module AzureOpenAI
     def parse_error_response(body)
       return "" if body.nil? || body.empty?
 
-      begin
-        JSON.parse(body)["error"]
-      rescue AzureOpenAI::Error
-        "Error details not available"
-      end
+      JSON.parse(body)["error"]
+    rescue StandardError
+      "Error details not available"
     end
   end
 end
